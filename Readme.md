@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дмитрий Горянин](https://up.htmlacademy.ru/ecmascript/7/user/497391).
-* Наставник: `Неизвестно`.
+* Наставник: [Максим Синяков](https://htmlacademy.ru/profile/id170345).
 
 ---
 
