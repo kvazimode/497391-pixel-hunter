@@ -1,17 +1,17 @@
+'use strict';
+
 const templateList = [];
-const mainNode = document.querySelector('#main');
+const mainNode = document.querySelector(`#main`);
 const RIGHT_KEY_CODE = 39;
 const LEFT_KEY_CODE = 37;
-let currentScreen = 1; //1 - startScreen
+let currentScreen = 1; // 1 - startScreen
 
-{
-  document.querySelectorAll('template').forEach(item => {
-    templateList.push({
-      name: item.id,
-      content: item.content
-    })
-  })
-}
+document.querySelectorAll(`template`).forEach((item) => {
+  templateList.push({
+    name: item.id,
+    content: item.content
+  });
+});
 
 function setScreen(n) {
   if (n >= 0 && n < templateList.length) {
@@ -21,14 +21,16 @@ function setScreen(n) {
     const toPaste = templateList[n].content.cloneNode(true);
     mainNode.appendChild(toPaste);
     currentScreen = n;
-  } else {
-    alert('туда нельзя');
   }
 }
 
-//direction === 1 - right(increase); 0 - left(decrease)
+// direction === 1 - right(increase); 0 - left(decrease)
 function toggleScreen(direction) {
-  direction ? setScreen(currentScreen + 1) : setScreen(currentScreen - 1);
+  if (direction) {
+    setScreen(currentScreen + 1);
+  } else {
+    setScreen(currentScreen - 1);
+  }
 }
 
 function arrowKeyPressHandler(evt) {
@@ -39,7 +41,7 @@ function arrowKeyPressHandler(evt) {
   }
 }
 
-const buttonWrapNode = document.createElement('div');
+const buttonWrapNode = document.createElement(`div`);
 buttonWrapNode.innerHTML = `
   <div class="arrows__wrap">
   <style>
@@ -61,12 +63,18 @@ buttonWrapNode.innerHTML = `
 `;
 
 document.body.appendChild(buttonWrapNode.firstElementChild.cloneNode(true));
-const toggleButtonList = document.querySelectorAll('.arrows__btn');
+const toggleButtonList = document.querySelectorAll(`.arrows__btn`);
 
-function arrowClickHandler(evt){
-  (evt.currentTarget.innerText === '<-') ? toggleScreen(0) : toggleScreen(1);
+function arrowClickHandler(evt) {
+  if (evt.currentTarget.innerText === `<-`) {
+    toggleScreen(0);
+  } else {
+    toggleScreen(1);
+  }
 }
 
-toggleButtonList.forEach(btn => {btn.addEventListener('click', arrowClickHandler)});
-document.addEventListener('keydown', arrowKeyPressHandler)
+toggleButtonList.forEach((btn) => {
+  btn.addEventListener(`click`, arrowClickHandler);
+});
+document.addEventListener(`keydown`, arrowKeyPressHandler);
 setScreen(currentScreen);
