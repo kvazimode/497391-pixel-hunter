@@ -7,9 +7,12 @@ const LEFT_KEY_CODE = 37;
 let currentScreen = 1; // 1 - startScreen
 
 document.querySelectorAll(`template`).forEach((item) => {
+  const shadow = document.createElement(`div`);
+  const content = item.content.cloneNode(true);
+  shadow.appendChild(content);
   templateList.push({
     name: item.id,
-    content: item.content
+    content: shadow
   });
 });
 
