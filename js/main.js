@@ -1,5 +1,3 @@
-'use strict';
-
 const screenOrder = [
   `intro`,
   `greeting`,
