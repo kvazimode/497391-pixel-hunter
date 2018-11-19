@@ -1,6 +1,17 @@
 'use strict';
 
-const templateList = [];
+const screenOrder = [
+  `intro`,
+  `greeting`,
+  `rules`,
+  `game-1`,
+  `game-2`,
+  `game-3`,
+  `stats`,
+  `modal-error`,
+  `modal-confirm`
+];
+const orderedTemplateList = [];
 const mainNode = document.querySelector(`#main`);
 const RIGHT_KEY_CODE = 39;
 const LEFT_KEY_CODE = 37;
@@ -10,18 +21,19 @@ document.querySelectorAll(`template`).forEach((item) => {
   const shadow = document.createElement(`div`);
   const content = item.content.cloneNode(true);
   shadow.appendChild(content);
-  templateList.push({
-    name: item.id,
-    content: shadow
-  });
+  for (let i = 0; i <= screenOrder.length; i++) {
+    if (item.id === screenOrder[i]) {
+      orderedTemplateList[i] = shadow;
+    }
+  }
 });
 
 function setScreen(n) {
-  if (n >= 0 && n < templateList.length) {
+  if (n >= 0 && n < orderedTemplateList.length) {
     while (mainNode.firstChild) {
       mainNode.removeChild(mainNode.firstChild);
     }
-    const toPaste = templateList[n].content.cloneNode(true);
+    const toPaste = orderedTemplateList[n].cloneNode(true);
     mainNode.appendChild(toPaste);
     currentScreen = n;
   }
@@ -47,21 +59,21 @@ function arrowKeyPressHandler(evt) {
 const buttonWrapNode = document.createElement(`div`);
 buttonWrapNode.innerHTML = `
   <div class="arrows__wrap">
-  <style>
-    .arrows__wrap {
-      position: absolute;
-      top: 95px;
-      left: 50%;
-      margin-left: -56px;
-    }
-    .arrows__btn {
-      background: none;
-      border: 2px solid black;
-      padding: 5px 20px;
-    }
-  </style>
-  <button class="arrows__btn"><-</button>
-  <button class="arrows__btn">-></button>
+    <style>
+      .arrows__wrap {
+        position: absolute;
+        top: 95px;
+        left: 50%;
+        margin-left: -56px;
+      }
+      .arrows__btn {
+        background: none;
+        border: 2px solid black;
+        padding: 5px 20px;
+      }
+    </style>
+    <button class="arrows__btn"><-</button>
+    <button class="arrows__btn">-></button>
   </div>
 `;
 
