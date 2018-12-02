@@ -45,3 +45,5 @@ const gameThreeScreen = render(`
   </ul>
   </section>
 `);
+
+export default gameThreeScreen;

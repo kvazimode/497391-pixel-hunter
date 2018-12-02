@@ -1,4 +1,5 @@
-import render from './js/util.js'
+import {render, setScreen} from 'js/util.js';
+import greetingScreen from 'js/greeting.js';
 
 const introScreen = render(`
   <section class="intro">
@@ -6,5 +7,10 @@ const introScreen = render(`
     <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
   </section>
 `);
+
+const asteriskButton = introScreen.querySelector(`.intro__asterisk`);
+asteriskButton.addEventListener(`click`, () => {
+  setScreen(greetingScreen);
+});
 
 export default introScreen;

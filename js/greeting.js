@@ -1,4 +1,4 @@
-import render from './js/util.js'
+import {render} from 'js/util.js';
 
 const greetingScreen = render(`
   <section class="greeting central--blur">
