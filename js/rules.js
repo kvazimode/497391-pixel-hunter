@@ -1,4 +1,6 @@
-import render from './util.js'
+import {render, setScreen} from './util.js';
+import gameOneScreen from './game-one.js';
+import greetingScreen from './greeting.js';
 
 const ruleScreen = render(`
   <header class="header">
@@ -29,5 +31,23 @@ const ruleScreen = render(`
   </form>
   </section>
 `);
+
+const submitButton = ruleScreen.querySelector(`.rules__button`);
+const nameInput = ruleScreen.querySelector(`.rules__input`);
+const backButton = ruleScreen.querySelector(`.back`);
+
+nameInput.addEventListener(`input`, () => {
+  if (nameInput.value) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
+});
+
+submitButton.addEventListener(`click`, () => {
+  setScreen(gameOneScreen);
+});
+
+backButton.addEventListener(`click`, () => setScreen(greetingScreen));
 
 export default ruleScreen;

@@ -1,4 +1,5 @@
-import render from './util.js'
+import {render, setScreen} from './util.js';
+import greetingScreen from './greeting.js';
 
 const statScreen = render(`
   <header class="header">
@@ -113,5 +114,9 @@ const statScreen = render(`
   </table>
   </section>
 `);
+
+const backButton = statScreen.querySelector(`.back`);
+
+backButton.addEventListener(`click`, () => setScreen(greetingScreen));
 
 export default statScreen;

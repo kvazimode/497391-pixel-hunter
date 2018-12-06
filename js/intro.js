@@ -1,5 +1,5 @@
-import {render, setScreen} from 'js/util.js';
-import greetingScreen from 'js/greeting.js';
+import {render, setScreen} from './util.js';
+import greetingScreen from './greeting.js';
 
 const introScreen = render(`
   <section class="intro">

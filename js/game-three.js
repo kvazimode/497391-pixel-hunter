@@ -1,4 +1,6 @@
-import render from './util.js'
+import {render, setScreen} from './util.js';
+import statScreen from './stat.js';
+import greetingScreen from './greeting.js';
 
 const gameThreeScreen = render(`
   <header class="header">
@@ -45,5 +47,14 @@ const gameThreeScreen = render(`
   </ul>
   </section>
 `);
+
+const optionList = gameThreeScreen.querySelectorAll(`.game__option`);
+const backButton = gameThreeScreen.querySelector(`.back`);
+
+optionList.forEach((item) => item.addEventListener(`click`, () => {
+  setScreen(statScreen);
+}));
+
+backButton.addEventListener(`click`, () => setScreen(greetingScreen));
 
 export default gameThreeScreen;
