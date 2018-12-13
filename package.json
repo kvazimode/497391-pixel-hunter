@@ -29,7 +29,7 @@
     "gulp-sass": "4.0.1",
     "gulp-svgstore": "6.1.1",
     "rollup-plugin-commonjs": "9.2.0",
-    "stylelint": "9.4.x",
+    "stylelint": "9.4.x",     
     "stylelint-config-htmlacademy": "0.1.x"
   },
   "engines": {
