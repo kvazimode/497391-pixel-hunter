@@ -3,7 +3,6 @@ const SLOW = 20;
 const NORMAL_POINT = 100;
 const EXTRA_POINT = 50;
 
-
 export const countPoints = (answers, lives) => {
   if(answers.length < 10 || answers.length > 10 || lives <= 0) {
     return -1;
