@@ -1,6 +1,6 @@
 export default {
   level: 0,
-  lives: 3,
+  life: 3,
   time: 0,
   tasks: 4 // for now
 };
