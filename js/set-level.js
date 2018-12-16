@@ -1,4 +1,4 @@
-export const setLevel = (state, level) => {
+export default (state, level) => {
   let toSet = level;
 
   if (level > state.tasks || level < 0 || level === null || level === undefined) {
