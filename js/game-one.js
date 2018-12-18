@@ -1,6 +1,5 @@
-import {render, setScreen} from './util.js';
+import {render, setScreen, enableBackButton} from './util.js';
 import gameTwoScreen from './game-two.js';
-import greetingScreen from './greeting.js';
 
 const gameOneScreen = render(`
   <header class="header">
@@ -63,7 +62,6 @@ const gameOneScreen = render(`
 
 const optionButtonList = gameOneScreen.querySelectorAll(`input.visually-hidden`);
 const checkedList = [];
-const backButton = gameOneScreen.querySelector(`.back`);
 
 function checkSelection(evt) {
   if (checkedList.length !== 0) {
@@ -82,6 +80,6 @@ optionButtonList.forEach((item) => {
   item.addEventListener(`click`, checkSelection);
 });
 
-backButton.addEventListener(`click`, () => setScreen(greetingScreen));
+enableBackButton(gameOneScreen);
 
 export default gameOneScreen;

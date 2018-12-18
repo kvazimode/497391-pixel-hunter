@@ -1,6 +1,5 @@
-import {render, setScreen} from './util.js';
+import {render, setScreen, enableBackButton} from './util.js';
 import gameThreeScreen from './game-three.js';
-import greetingScreen from './greeting.js';
 
 const gameTwoScreen = render(`
   <header class="header">
@@ -51,12 +50,11 @@ const gameTwoScreen = render(`
 `);
 
 const optionButtonList = gameTwoScreen.querySelectorAll(`input.visually-hidden`);
-const backButton = gameTwoScreen.querySelector(`.back`);
 
 optionButtonList.forEach((item) => item.addEventListener(`click`, () => {
   setScreen(gameThreeScreen);
 }));
 
-backButton.addEventListener(`click`, () => setScreen(greetingScreen));
+enableBackButton(gameTwoScreen);
 
 export default gameTwoScreen;

@@ -1,7 +1,5 @@
-const FAST = 10; // sec
-const SLOW = 20;
-const NORMAL_POINT = 100;
-const EXTRA_POINT = 50;
+import state from './game-state';
+const param = state.settings;
 
 export default (answers, lives) => {
   if(answers.length < 10 || answers.length > 10 || lives <= 0) {
@@ -11,11 +9,11 @@ export default (answers, lives) => {
     if (!answer.result) {
       return sum;
     }
-    if (answer.time <= FAST) {
-      sum += EXTRA_POINT;
-    } else if (answer.time > SLOW) {
-      sum -= EXTRA_POINT;
+    if (answer.time <= param.FAST) {
+      sum += param.EXTRA_POINT;
+    } else if (answer.time > param.SLOW) {
+      sum -= param.EXTRA_POINT;
     }
-    return sum + NORMAL_POINT;
-  }, EXTRA_POINT * lives);
+    return sum + param.NORMAL_POINT;
+  }, param.EXTRA_POINT * lives);
 };

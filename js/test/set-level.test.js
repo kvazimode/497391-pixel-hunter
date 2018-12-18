@@ -8,7 +8,7 @@ describe(`Level setter check`, () => {
     assert.equal(setLevel(state, 4).level, 4);
   });
   it(`should not set level more than available`, () => {
-    assert.equal(setLevel(state, 10).level, -1);
+    assert.equal(setLevel(state, 11).level, -1);
   });
   it(`should not set level lower than 0`, () => {
     assert.equal(setLevel(state, -20).level, -1);
