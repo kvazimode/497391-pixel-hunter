@@ -35,6 +35,6 @@ const gameStart = () => {
   };
   setScreen(wrapElement);
   changeTask(game);
-}
+};
 
 export default gameStart;

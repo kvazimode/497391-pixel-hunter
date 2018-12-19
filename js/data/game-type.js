@@ -37,7 +37,7 @@ export default {
         evt.preventDefault();
         const correct = evt.target.value;
         updateState(state, correct, callback);
-      }
+      };
       formButtons.forEach((button) => button.addEventListener(`click`, radioClick));
     }
   },
@@ -86,7 +86,7 @@ export default {
           const correct = [leftPicRadioSelected, rightPicRadioselected];
           updateState(state, correct, callback);
         }
-      }
+      };
       formButtons.forEach((button) => button.addEventListener(`click`, radioClick));
     }
   },
@@ -103,7 +103,7 @@ export default {
         <div class="game__option">
           <img src="${task.pictures[2]}" alt="Option 3" width="304" height="455">
         </div>
-      </form>`
+      </form>`;
     },
     formListener(el, state, callback) {
       const form = el.querySelector(`.game__content`);
@@ -112,8 +112,8 @@ export default {
         evt.preventDefault();
         const correct = evt.currentTarget.firstElementChild.src;
         updateState(state, correct, callback);
-      }
+      };
       picList.forEach((pic) => pic.addEventListener(`click`, picClick));
     }
   }
-}
+};

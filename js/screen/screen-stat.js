@@ -4,7 +4,7 @@ import screenStatRecord from './screen-stat-record';
 
 const title = (result) => {
   return result.isFail ? `Поражение` : `Победа!`;
-}
+};
 
 export default (state) => {
   const result = gameResult(state);

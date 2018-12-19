@@ -17,4 +17,4 @@ export default (state) => {
     arr.push(answerType);
   }
   return arr;
-}
+};

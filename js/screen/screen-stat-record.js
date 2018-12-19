@@ -9,7 +9,7 @@ const recordHeader = (result, state) => {
   } else {
     return `<td class="result__points"></td>`;
   }
-}
+};
 
 const extraPointsRow = (amount, points, type) => {
   const TYPE = {
@@ -33,22 +33,22 @@ const extraPointsTotal = (result, state) => {
 
   const calculateExtraPoints = (toMultiply) => {
     return toMultiply * state.settings.EXTRA_POINT;
-  }
+  };
 
   if (!result.isFail) {
-    temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`)
-  };
+    temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`);
+  }
 
   if (!result.isFail && result.fast) {
-    temp += extraPointsRow(result.fast, calculateExtraPoints(result.fast), `fast`)
-  };
+    temp += extraPointsRow(result.fast, calculateExtraPoints(result.fast), `fast`);
+  }
 
   if (!result.isFail && result.slow) {
-    temp += extraPointsRow(result.slow, calculateExtraPoints(result.slow), `slow`)
-  };
+    temp += extraPointsRow(result.slow, calculateExtraPoints(result.slow), `slow`);
+  }
 
   return temp;
-}
+};
 
 const totalScore = (result) => {
   let temp = `<td class="result__total  result__total--final">fail</td>`;
@@ -60,7 +60,7 @@ const totalScore = (result) => {
     </tr>`;
   }
   return temp;
-}
+};
 
 export default (state, result) => {
   return `
@@ -73,6 +73,5 @@ export default (state, result) => {
       ${recordHeader(result, state)}
     ${extraPointsTotal(result, state)}
     ${totalScore(result)}
-  </table>
-  `
-}
+  </table>`;
+};

@@ -2,7 +2,7 @@ import state from './game-state';
 const param = state.settings;
 
 export default (answers, lives) => {
-  if(answers.length < 10 || answers.length > 10 || lives <= 0) {
+  if (answers.length < 10 || answers.length > 10 || lives <= 0) {
     return -1;
   }
   return answers.reduce((sum, answer) => {

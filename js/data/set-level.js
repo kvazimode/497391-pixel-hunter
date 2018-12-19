@@ -6,4 +6,4 @@ export default (state, level) => {
   }
 
   return Object.assign({}, state, {level: toSet});
-}
+};
