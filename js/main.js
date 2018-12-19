@@ -1,6 +1,6 @@
-import {setScreen, setGreeting} from './util.js';
-import introScreen from './intro.js';
-import greetingScreen from './greeting';
+import {setScreen, setGreeting} from './util';
+import introScreen from './screen-intro';
+import greetingScreen from './screen-greeting';
 
 setGreeting(greetingScreen);
 setScreen(introScreen);

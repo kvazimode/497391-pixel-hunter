@@ -1,5 +1,5 @@
-import {render, setScreen} from './util.js';
-import ruleScreen from './rules.js';
+import {render, setScreen} from './util';
+import ruleScreen from './screen-rules';
 
 const greetingScreen = render(`
   <section class="greeting central--blur">

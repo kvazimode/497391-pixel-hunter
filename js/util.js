@@ -17,3 +17,17 @@ export const enableBackButton = (template) => {
   const backButton = template.querySelector(`.back`);
   backButton.addEventListener(`click`, () => setScreen(greetingScreen));
 };
+export const compareAnswers = (given, correct) => {
+  if (typeof given === `string`) {
+    return given === correct;
+  } else if (typeof given === `object`) {
+    let equal = given.every((item, i) => {
+      if (item !== correct[i]) {
+        return false;
+      };
+      return true;
+    });
+    return equal;
+  }
+}
+

@@ -4,6 +4,7 @@ import screenHeader from './screen-header';
 import screenFooter from './screen-footer';
 import screenGame from './screen-game';
 import gameType from './game-type';
+import screenStat from './screen-stat';
 
 const gameStart = () => {
   const game = Object.assign({}, INITIAL_STATE);
@@ -18,6 +19,11 @@ const gameStart = () => {
   wrapElement.appendChild(footerElement);
 
   const changeTask = (state) => {
+    if (state.level >= 10 || state.life === 0) {
+      setScreen(screenStat(state));
+      return;
+    }
+
     const type = state.tasks[state.level].template;
 
     headerElement.innerHTML = screenHeader(state);

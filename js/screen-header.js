@@ -1,7 +1,5 @@
-const MAX_LIVES = 3;
-
 export default (state) => {
-  const temp = `
+  return `
     <header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
@@ -14,7 +12,7 @@ export default (state) => {
     </button>
     <div class="game__timer">${state.time}</div>
     <div class="game__lives">
-      ${new Array(MAX_LIVES - state.life)
+      ${new Array(state.settings.MAX_LIFE - state.life)
       .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="31" height="27">`)
       .join(``)}
       ${new Array(state.life)
@@ -22,6 +20,4 @@ export default (state) => {
       .join(``)}
     </div>
     </header>`;
-
-  return temp;
 };

@@ -1,4 +1,4 @@
-import {render, setScreen, enableBackButton} from './util.js';
+import {render, enableBackButton} from './util';
 import gameStart from './game-start';
 
 const ruleScreen = render(`

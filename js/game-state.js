@@ -17,6 +17,7 @@ export default {
     {template: `threePic`, text: `Найдите рисунок среди изображений`, pictures: [pics.photos[0], pics.paintings[1], pics.photos[2]], correct: pics.paintings[1], answer: ``, time: 0}
   ],
   settings: {
+    MAX_LIFE: 3,
     FAST: 10,
     SLOW: 20,
     EXTRA_POINT: 50,
