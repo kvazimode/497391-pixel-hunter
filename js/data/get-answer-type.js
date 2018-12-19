@@ -1,4 +1,4 @@
-import {compareAnswers} from './util';
+import {compareAnswers} from './../util';
 
 export default (state) => {
   const arr = [];

@@ -1,4 +1,4 @@
-import getAnswerType from './get-answer-type';
+import getAnswerType from './../data/get-answer-type';
 
 export default (state) => {
   const answerLine = [];

@@ -1,4 +1,4 @@
-import {render, setScreen} from './util';
+import {render, setScreen} from './../util';
 import ruleScreen from './screen-rules';
 
 const greetingScreen = render(`

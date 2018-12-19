@@ -1,6 +1,6 @@
 import setLevel from './set-level';
 import decreaseLife from './decrease-life';
-import {compareAnswers} from './util';
+import {compareAnswers} from './../util';
 
 const updateState = (state, correct, callback) => {
   let nextState = setLevel(state, state.level + 1);

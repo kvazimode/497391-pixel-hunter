@@ -1,4 +1,4 @@
-import gameType from './game-type';
+import gameType from './../data/game-type';
 
 export default (state) => {
   const task = state.tasks[state.level];

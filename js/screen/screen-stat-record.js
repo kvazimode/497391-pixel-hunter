@@ -1,7 +1,6 @@
 import screenFooter from './screen-footer';
-import state from './game-state';
 
-const recordHeader = (result) => {
+const recordHeader = (result, state) => {
   if (!result.isFail) {
     return `
       <td class="result__points">× 100</td>
@@ -29,22 +28,23 @@ const extraPointsRow = (amount, points, type) => {
     </tr>`;
 };
 
-const extraPointsTotal = (result) => {
+const extraPointsTotal = (result, state) => {
   let temp = ``;
 
+  const calculateExtraPoints = (toMultiply) => {
+    return toMultiply * state.settings.EXTRA_POINT;
+  }
+
   if (!result.isFail) {
-    const points = state.life * state.settings.EXTRA_POINT;
-    temp += extraPointsRow(state.life, points, `lives`)
+    temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`)
   };
 
   if (!result.isFail && result.fast) {
-    const points = result.fast * state.settings.EXTRA_POINT;
-    temp += extraPointsRow(result.fast, points, `fast`)
+    temp += extraPointsRow(result.fast, calculateExtraPoints(result.fast), `fast`)
   };
 
   if (!result.isFail && result.slow) {
-    const points = result.slow * state.settings.EXTRA_POINT;
-    temp += extraPointsRow(result.slow, points, `slow`)
+    temp += extraPointsRow(result.slow, calculateExtraPoints(result.slow), `slow`)
   };
 
   return temp;
@@ -70,8 +70,8 @@ export default (state, result) => {
       <td colspan="2">
         ${screenFooter(state)}
       </td>
-      ${recordHeader(result)}
-    ${extraPointsTotal(result)}
+      ${recordHeader(result, state)}
+    ${extraPointsTotal(result, state)}
     ${totalScore(result)}
   </table>
   `

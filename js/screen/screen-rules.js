@@ -1,5 +1,5 @@
-import {render, enableBackButton} from './util';
-import gameStart from './game-start';
+import {render, enableBackButton} from './../util';
+import gameStart from './../data/game-start';
 
 const ruleScreen = render(`
   <header class="header">

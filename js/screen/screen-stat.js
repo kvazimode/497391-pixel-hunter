@@ -1,5 +1,5 @@
-import {render, enableBackButton} from './util';
-import gameResult from './game-result';
+import {render, enableBackButton} from './../util';
+import gameResult from './../data/game-result';
 import screenStatRecord from './screen-stat-record';
 
 const title = (result) => {

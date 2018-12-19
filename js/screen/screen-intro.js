@@ -1,4 +1,4 @@
-import {render, setScreen} from './util';
+import {render, setScreen} from './../util';
 import greetingScreen from './screen-greeting';
 
 const introScreen = render(`

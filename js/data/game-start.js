@@ -1,10 +1,10 @@
 import INITIAL_STATE from './game-state';
-import {render, enableBackButton, setScreen} from './util';
-import screenHeader from './screen-header';
-import screenFooter from './screen-footer';
-import screenGame from './screen-game';
+import {render, enableBackButton, setScreen} from './../util';
+import screenHeader from './../screen/screen-header';
+import screenFooter from './../screen/screen-footer';
+import screenGame from './../screen/screen-game';
 import gameType from './game-type';
-import screenStat from './screen-stat';
+import screenStat from './../screen/screen-stat';
 
 const gameStart = () => {
   const game = Object.assign({}, INITIAL_STATE);

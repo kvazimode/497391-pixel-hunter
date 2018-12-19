@@ -1,4 +1,4 @@
-import {pics} from "./data/temp-pics";
+import {pics} from './temp-pics';
 
 export default {
   level: 0,
