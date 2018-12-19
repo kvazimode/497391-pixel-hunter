@@ -1,5 +1,5 @@
-import setLevel from './../set-level';
-import state from './../game-state';
+import setLevel from './../data/set-level';
+import state from './../data/game-state';
 import {assert} from 'chai';
 
 describe(`Level setter check`, () => {

@@ -1,4 +1,4 @@
-import countPoints from './../count-points';
+import countPoints from './../data/count-points';
 import {assert} from 'chai';
 
 let generateAnswerArray = (length, correct, time) => {

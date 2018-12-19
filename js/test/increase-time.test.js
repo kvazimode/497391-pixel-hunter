@@ -1,5 +1,5 @@
-import increaseTime from '../increase-time';
-import state from '../game-state';
+import increaseTime from './../data/increase-time';
+import state from './../data/game-state';
 import {assert} from 'chai';
 
 describe(`Time setter check`, () => {
