@@ -1,4 +1,4 @@
-import {render, getGameView} from './../util';
+import {getGameView} from './../util';
 
 export default (state) => {
   const task = state.tasks[state.level];

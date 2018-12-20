@@ -1,4 +1,6 @@
-import screenFooter from './screen-footer';
+import ViewFooter from './../view/view-footer';
+import {render, setScreen} from './../util';
+
 const TYPE = {
   lives: `Бонус за жизни`,
   fast: `Бонус за скорость`,
@@ -29,23 +31,21 @@ const extraPointsRow = (amount, points, type) => {
 
 const extraPointsTotal = (result, state) => {
   let temp = ``;
-
+  if (result.isFail) {
+    return temp;
+  }
   const calculateExtraPoints = (toMultiply) => {
     return toMultiply * state.settings.EXTRA_POINT;
   };
+  temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`);
 
-  if (!result.isFail) {
-    temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`);
-  }
-
-  if (!result.isFail && result.fast) {
+  if (result.fast) {
     temp += extraPointsRow(result.fast, calculateExtraPoints(result.fast), `fast`);
   }
 
-  if (!result.isFail && result.slow) {
+  if (result.slow) {
     temp += extraPointsRow(result.slow, calculateExtraPoints(result.slow), `slow`);
   }
-
   return temp;
 };
 
@@ -62,12 +62,14 @@ const totalScore = (result) => {
 };
 
 export default (state, result) => {
+  const viewFooter = new ViewFooter(state)
+  
   return `
   <table class="result__table">
     <tr>
       <td class="result__number">1.</td>
       <td colspan="2">
-        ${screenFooter(state)}
+        ${viewFooter.el}
       </td>
       ${recordHeader(result, state)}
     ${extraPointsTotal(result, state)}

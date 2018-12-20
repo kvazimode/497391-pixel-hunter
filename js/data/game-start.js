@@ -1,31 +1,34 @@
 import INITIAL_STATE from './game-state';
-import {render, enableBackButton, setScreen} from './../util';
+import {render, enableBackButton, setScreen, getGameView} from './../util';
 import ViewHeader from './../view/view-header';
-import screenFooter from './../screen/screen-footer';
-import screenGame from './../screen/screen-game';
-import screenStat from './../screen/screen-stat';
+import ViewFooter from './../view/view-footer';
+import ViewStat from './../view/view-stat';
+import updateState from './update-state';
 
 const gameStart = () => {
   const game = Object.assign({}, INITIAL_STATE);
-
   const wrapElement = render();
 
   const changeTask = (state) => {
     if (state.level >= 10 || state.life === 0) {
-      setScreen(screenStat(state));
+      const stat = new ViewStat(state);
+      setScreen(stat.el);
       return;
     }
-
+    const type = state.tasks[state.level].template;
     const viewHeader = new ViewHeader(state);
-    const viewGame = screenGame(state);
-    const viewFooter = screenFooter(state);
+    const viewGame = getGameView(type, state);
+    const viewFooter = new ViewFooter(state);
 
+    wrapElement.innerHTML = ``;
     wrapElement.appendChild(viewHeader.el);
-    wrapElement.appendChild(viewGame);
-    wrapElement.appendChild(viewFooter);
+    wrapElement.appendChild(viewGame.el);
+    wrapElement.appendChild(viewFooter.el);
 
     enableBackButton(wrapElement);
-    // gameType[type].formListener(gameElement, state, changeTask);
+    viewGame.clickAction = (answer) => {
+      updateState(state, answer, changeTask);
+    };
   };
   setScreen(wrapElement);
   changeTask(game);

@@ -7,4 +7,4 @@ export default () => {
   viewGreeting.clickAction = () => ruleScreen();
   setGreeting(viewGreeting.el);
   setScreen(viewGreeting.el);
-}
+};
