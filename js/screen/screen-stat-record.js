@@ -1,4 +1,9 @@
 import screenFooter from './screen-footer';
+const TYPE = {
+  lives: `Бонус за жизни`,
+  fast: `Бонус за скорость`,
+  slow: `Штраф за медлительность`
+};
 
 const recordHeader = (result, state) => {
   if (!result.isFail) {
@@ -12,12 +17,6 @@ const recordHeader = (result, state) => {
 };
 
 const extraPointsRow = (amount, points, type) => {
-  const TYPE = {
-    lives: `Бонус за жизни`,
-    fast: `Бонус за скорость`,
-    slow: `Штраф за медлительность`
-  };
-
   return `
     <tr>
       <td></td>

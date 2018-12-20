@@ -1,6 +1,8 @@
-import {setScreen, setGreeting} from './util';
-import introScreen from './screen/screen-intro';
+import {setScreen} from './util';
+import ViewIntro from './view/view-intro';
 import greetingScreen from './screen/screen-greeting';
 
-setGreeting(greetingScreen);
-setScreen(introScreen);
+const viewIntro = new ViewIntro();
+viewIntro.clickAction = () => greetingScreen();
+
+setScreen(viewIntro.el);

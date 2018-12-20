@@ -1,11 +1,9 @@
-import gameType from './../data/game-type';
+import {render, getGameView} from './../util';
 
 export default (state) => {
   const task = state.tasks[state.level];
   const type = task.template;
+  const viewGame = getGameView(type, state);
 
-  return `
-  <section class="game">
-    <p class="game__task">${task.text}</p>
-    ${gameType[type].formTemplate(task)}`;
+  return viewGame.el;
 };

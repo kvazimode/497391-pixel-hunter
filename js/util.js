@@ -1,8 +1,11 @@
 const mainNode = document.querySelector(`#main`);
+import ViewOnePic from './view/view-one-pic';
+import ViewTwoPic from './view/view-two-pic';
+import ViewThreePic from './view/view-three-pic';
 
 export const render = (el = ``) => {
   const wrap = document.createElement(`div`);
-  wrap.innerHTML = el;
+  wrap.innerHTML = el.trim();
   return wrap;
 };
 export const setScreen = (screen) => {
@@ -20,14 +23,21 @@ export const enableBackButton = (template) => {
 export const compareAnswers = (given, correct) => {
   if (typeof given === `string`) {
     return given === correct;
-  } else if (typeof given === `object`) {
+  }
+  if (typeof given === `object`) {
     let equal = given.every((item, i) => {
-      if (item !== correct[i]) {
-        return false;
-      };
-      return true;
+      return item === correct[i];
     });
     return equal;
   }
-}
-
+};
+export const getGameView = (type, state) => {
+  switch(type) {
+    case `onePic`:
+      return new ViewOnePic(state);
+    case `twoPic`:
+      return new ViewTwoPic(state);
+    case `threePic`:
+      return new ViewThreePic(state);
+  }
+};
