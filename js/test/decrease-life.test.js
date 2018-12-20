@@ -1,5 +1,5 @@
-import decreaseLife from '../decrease-life';
-import state from '../game-state';
+import decreaseLife from './../data/decrease-life';
+import state from './../data/game-state';
 import {assert} from 'chai';
 
 describe(`Life setter check`, () => {

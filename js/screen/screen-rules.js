@@ -1,6 +1,5 @@
-import {render, setScreen} from './util.js';
-import gameOneScreen from './game-one.js';
-import greetingScreen from './greeting.js';
+import {render, enableBackButton} from './../util';
+import gameStart from './../data/game-start';
 
 const ruleScreen = render(`
   <header class="header">
@@ -34,20 +33,13 @@ const ruleScreen = render(`
 
 const submitButton = ruleScreen.querySelector(`.rules__button`);
 const nameInput = ruleScreen.querySelector(`.rules__input`);
-const backButton = ruleScreen.querySelector(`.back`);
 
 nameInput.addEventListener(`input`, () => {
-  if (nameInput.value) {
-    submitButton.disabled = false;
-  } else {
-    submitButton.disabled = true;
-  }
+  submitButton.disabled = !nameInput.value;
 });
 
-submitButton.addEventListener(`click`, () => {
-  setScreen(gameOneScreen);
-});
+submitButton.addEventListener(`click`, () => gameStart());
 
-backButton.addEventListener(`click`, () => setScreen(greetingScreen));
+enableBackButton(ruleScreen);
 
 export default ruleScreen;
