@@ -1,9 +1,13 @@
 import {render, enableBackButton} from './../util';
 import gameResult from './../data/game-result';
 import screenStatRecord from './screen-stat-record';
+const text = {
+  WIN: `Победа!`,
+  FAIL: `Поражение`
+};
 
 const title = (result) => {
-  return result.isFail ? `Поражение` : `Победа!`;
+  return result.isFail ? text.FAIL : text.WIN;
 };
 
 export default (state) => {

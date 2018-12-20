@@ -1,4 +1,9 @@
 import screenFooter from './screen-footer';
+const TYPE = {
+  lives: `Бонус за жизни`,
+  fast: `Бонус за скорость`,
+  slow: `Штраф за медлительность`
+};
 
 const recordHeader = (result, state) => {
   if (!result.isFail) {
@@ -12,12 +17,6 @@ const recordHeader = (result, state) => {
 };
 
 const extraPointsRow = (amount, points, type) => {
-  const TYPE = {
-    lives: `Бонус за жизни`,
-    fast: `Бонус за скорость`,
-    slow: `Штраф за медлительность`
-  };
-
   return `
     <tr>
       <td></td>
@@ -30,23 +29,22 @@ const extraPointsRow = (amount, points, type) => {
 
 const extraPointsTotal = (result, state) => {
   let temp = ``;
-
+  if (result.isFail) {
+    return temp;
+  }
   const calculateExtraPoints = (toMultiply) => {
     return toMultiply * state.settings.EXTRA_POINT;
   };
 
-  if (!result.isFail) {
-    temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`);
-  }
+  temp += extraPointsRow(state.life, calculateExtraPoints(state.life), `lives`);
 
-  if (!result.isFail && result.fast) {
+  if (result.fast) {
     temp += extraPointsRow(result.fast, calculateExtraPoints(result.fast), `fast`);
   }
 
-  if (!result.isFail && result.slow) {
+  if (result.slow) {
     temp += extraPointsRow(result.slow, calculateExtraPoints(result.slow), `slow`);
   }
-
   return temp;
 };
 

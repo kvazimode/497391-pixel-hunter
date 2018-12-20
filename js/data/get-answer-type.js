@@ -1,18 +1,25 @@
 import {compareAnswers} from './../util';
+const answer = {
+  CORRECT: `correct`,
+  WRONG: `wrong`,
+  SLOW: `slow`,
+  FAST: `fast`,
+  UNKNOWN: `unknown`
+};
 
 export default (state) => {
   const arr = [];
   for (const task of state.tasks) {
-    let answerType = `unknown`;
+    let answerType = answer.UNKNOWN;
     if (task.answer && compareAnswers(task.answer, task.correct)) {
-      answerType = `correct`;
+      answerType = answer.CORRECT;
       if (task.time < state.settings.FAST) {
-        answerType = `fast`;
+        answerType = answer.FAST;
       } else if (task.time > state.settings.SLOW) {
-        answerType = `slow`;
+        answerType = answer.SLOW;
       }
     } else if (task.answer && !compareAnswers(task.answer, task.correct)) {
-      answerType = `wrong`;
+      answerType = answer.WRONG;
     }
     arr.push(answerType);
   }

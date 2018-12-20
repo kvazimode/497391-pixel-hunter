@@ -1,9 +1,8 @@
 import getAnswerType from './../data/get-answer-type';
 
 export default (state) => {
-  const answerLine = [];
-  getAnswerType(state).forEach((answer) => {
-    answerLine.push(`<li class="stats__result stats__result--${answer}"></li>`);
+  const answerLine = getAnswerType(state).map((answer) => {
+    return `<li class="stats__result stats__result--${answer}"></li>`;
   });
   const temp = `
       <ul class="stats">

@@ -20,14 +20,11 @@ export const enableBackButton = (template) => {
 export const compareAnswers = (given, correct) => {
   if (typeof given === `string`) {
     return given === correct;
-  } else if (typeof given === `object`) {
+  }
+  if (typeof given === `object`) {
     let equal = given.every((item, i) => {
-      if (item !== correct[i]) {
-        return false;
-      };
-      return true;
+      return item === correct[i];
     });
     return equal;
   }
-}
-
+};
