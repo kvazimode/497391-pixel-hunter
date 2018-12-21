@@ -21,7 +21,6 @@ export default class ViewExtraRow extends ViewAbstract {
     ${this.slow ? this.getRowTemplate(`slow`, this.slow) : ``}
     `;
   }
-  
   getRowTemplate(type, amount) {
     return `
       <tr>
