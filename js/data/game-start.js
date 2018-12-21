@@ -2,7 +2,7 @@ import INITIAL_STATE from './game-state';
 import {render, enableBackButton, setScreen, getGameView} from './../util';
 import ViewHeader from './../view/view-header';
 import ViewFooter from './../view/view-footer';
-import ViewStat from './../view/view-stat';
+import screenStat from './../screen/screen-stat';
 import updateState from './update-state';
 
 const gameStart = () => {
@@ -11,8 +11,7 @@ const gameStart = () => {
 
   const changeTask = (state) => {
     if (state.level >= 10 || state.life === 0) {
-      const stat = new ViewStat(state);
-      setScreen(stat.el);
+      setScreen(screenStat(state));
       return;
     }
     const type = state.tasks[state.level].template;

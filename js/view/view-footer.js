@@ -15,7 +15,6 @@ export default class ViewFooter extends ViewAbstract {
     return `
     <ul class="stats">
       ${answerLine.join(``)}
-    </ul>
-  </section>`;
+    </ul>`;
   }
 }

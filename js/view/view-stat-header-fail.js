@@ -1,19 +1,12 @@
 import ViewAbstract from './view-abstract';
-import gameResult from './../data/game-result';
-import screenStatRecord from './../screen/screen-stat-record';
 
-export default class ViewFooter extends ViewAbstract {
-  constructor(state) {
+export default class ViewStatHeaderFail extends ViewAbstract {
+  constructor(title) {
     super();
-    this.state = state;
+    this.title = title;
   }
 
   get template() {
-    const result = gameResult(this.state);
-    const title = (res) => {
-      return res.isFail ? `Поражение` : `Победа!`;
-    };
-
     return `
     <header class="header">
     <button class="back">
@@ -27,8 +20,6 @@ export default class ViewFooter extends ViewAbstract {
     </button>
     </header>
     <section class="result">
-    <h2 class="result__title">${title(result)}</h2>
-      ${screenStatRecord(this.state, result)}  
-    </section>`;
+    <h2 class="result__title">${this.title}</h2>`;
   }
 }

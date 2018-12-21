@@ -2,7 +2,7 @@ import {pics} from './temp-pics';
 
 export default {
   level: 0,
-  life: 0,
+  life: 3,
   time: 15,
   tasks: [
     {template: `onePic`, text: `Угадай, фото или рисунок?`, pictures: [pics.paintings[0]], correct: `paint`, answer: ``, time: 0},
