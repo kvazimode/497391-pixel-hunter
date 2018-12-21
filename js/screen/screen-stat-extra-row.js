@@ -1,4 +1,4 @@
-import ViewRow from './../view/view-stat-record-extra-row';
+import ViewRow from './../view/view-stat-extra-row';
 
 export default (result, life, extraPoints) => {
   let extra = ``;
