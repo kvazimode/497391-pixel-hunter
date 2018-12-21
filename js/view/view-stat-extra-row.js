@@ -15,18 +15,13 @@ export default class ViewExtraRow extends ViewAbstract {
   }
 
   get template() {
-    let temp = ``;
-    if (this.lifes) {
-      temp += this.getRowTemplate(`lives`, this.lifes);
-    }
-    if (this.fast) {
-      temp += this.getRowTemplate(`fast`, this.fast);
-    }
-    if (this.slow) {
-      temp += this.getRowTemplate(`slow`, this.slow);
-    }
-    return temp;
+    return `
+    ${this.lifes ? this.getRowTemplate(`lives`, this.lifes) : ``}
+    ${this.fast ? this.getRowTemplate(`fast`, this.fast) : ``}
+    ${this.slow ? this.getRowTemplate(`slow`, this.slow) : ``}
+    `;
   }
+  
   getRowTemplate(type, amount) {
     return `
       <tr>
