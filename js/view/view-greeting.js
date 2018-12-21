@@ -1,4 +1,5 @@
 import ViewAbstract from './view-abstract';
+import App from './../app';
 
 export default class ViewGreeting extends ViewAbstract {
   constructor() {
@@ -34,5 +35,7 @@ export default class ViewGreeting extends ViewAbstract {
     continueButton.addEventListener(`click`, () => this.clickAction());
   }
 
-  clickAction() {}
+  clickAction() {
+    App.showRules();
+  }
 }

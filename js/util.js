@@ -33,11 +33,11 @@ export const compareAnswers = (given, correct) => {
 };
 export const getGameView = (type, state) => {
   switch(type) {
-    case `onePic`:
+    case `tinder-like`:
       return new ViewOnePic(state);
-    case `twoPic`:
+    case `two-of-two`:
       return new ViewTwoPic(state);
-    case `threePic`:
+    case `one-of-three`:
       return new ViewThreePic(state);
   }
 };

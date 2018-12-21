@@ -17,8 +17,8 @@ const text = {
 
 export default (state) => {
   const result = gameResult(state);
-  const title = (result) => {
-    return result.isFail ? text.FAIL : text.WIN;
+  const title = (res) => {
+    return res.isFail ? text.FAIL : text.WIN;
   };
   const header = new ViewStatHeader(title(result));
   const headerFail = new ViewStatHeaderFail(title(result));

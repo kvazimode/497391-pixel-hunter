@@ -1,4 +1,5 @@
 import ViewAbstract from './view-abstract';
+import App from './../app';
 
 export default class ViewRules extends ViewAbstract {
   constructor() {
@@ -42,8 +43,10 @@ export default class ViewRules extends ViewAbstract {
     nameInput.addEventListener(`input`, () => {
       submitButton.disabled = !nameInput.value;
     });
-    submitButton.addEventListener(`click`, (evt) => this.clickAction(evt));
+    submitButton.addEventListener(`click`, () => this.clickAction(nameInput.value));
   }
 
-  clickAction() {}
+  clickAction(player) {
+    App.showGame(player);
+  }
 }
