@@ -17,7 +17,8 @@ export default class App {
     setScreen(viewIntro.el);
     ServerAction.getData()
       .then((data) => gameData = data)
-      .then(App.showGreeting);
+      .then(App.showGreeting)
+      .catch(App.showModalError);
   }
 
   static showGreeting() {
@@ -36,9 +37,12 @@ export default class App {
     screenGame.start();
   }
 
-  static showStat(state) {
-    const screenStat = new ScreenStat(state);
-    setScreen(screenStat.el);
+  static showStat(state, player) {
+    ServerAction.saveResults(state, player)
+      .then(() => ServerAction.getResults(player))
+      .then((data) => new ScreenStat(data))
+      .then((screenStat) => setScreen(screenStat.el))
+      .catch(App.showModalError);
   }
 
   static showModalConfirm() {
