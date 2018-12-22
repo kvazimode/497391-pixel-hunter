@@ -19,4 +19,22 @@ export default class ServerAction {
       .then(checkStatus)
       .then(parse);
   }
+
+  static getResults(playerName = NAME) {
+    return fetch(`${URL}/stats/${ID}-${playerName}`)
+      .then(checkStatus)
+      .then(parse);
+  }
+
+  static saveResults(data, playerName = NAME) {
+    const requestParams = {
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`
+      },
+      method: `POST`
+    };
+    return fetch(`${URL}/stats/${ID}-${playerName}`, requestParams)
+      .then(checkStatus);
+  }
 }

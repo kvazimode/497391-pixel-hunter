@@ -18,6 +18,14 @@ export default class GameModel {
   restart() {
     this._state = Object.assign({}, INITIAL_STATE);
     this._state = Object.assign({}, this._state, {tasks: this.data, player: this.player});
+    this.clearUserAnswers();
+  }
+
+  clearUserAnswers() {
+    this._state.tasks.forEach((item) => {
+      item.answer = null;
+      item.time = null;
+    });
   }
 
   setNextLevel(state) {
