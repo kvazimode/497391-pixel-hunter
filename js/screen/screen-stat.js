@@ -16,7 +16,7 @@ export default class ScreenStat {
     this.header.clickAction = () => App.showGreeting();
     this.wrap = document.createElement(`div`);
     this.wrap.appendChild(this.header.el);
-    for (let i = data.length - 1; i >= 0 ; i--) {
+    for (let i = data.length - 1; i >= 0; i--) {
       this.state = data[i];
       this.result = gameResult(this.state);
       this.normalPoints = this.result.correct * this.state.settings.NORMAL_POINT;
