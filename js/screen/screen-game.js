@@ -63,7 +63,7 @@ export default class ScreenGame {
   updateTask() {
     const type = this.model.state.tasks[this.model.state.level].type;
     const game = getGameView(type, this.model.state);
-    game.clickAction = (state, answer) => {
+    game.clickAction = (answer) => {
       this.updateState(answer);
     };
     this.wrapElement.replaceChild(game.el, this.game.el);
@@ -106,7 +106,7 @@ export default class ScreenGame {
       this.stop();
       return;
     }
-    this.model.setNextLevel(this.model.state);
+    // this.model.setNextLevel(this.model.state);
     this.changeTask();
   }
 }

@@ -11,14 +11,14 @@ export default (state) => {
   const arr = [];
   for (const task of state.tasks) {
     let answerType = answer.UNKNOWN;
-    if (task.answer && compareAnswers(task.answer, task.answers)) {
+    if (task.answer && compareAnswers(task.answer, task.correct)) {
       answerType = answer.CORRECT;
-      if (task.time && task.time < state.settings.FAST) {
+      if (task.time < state.settings.FAST) {
         answerType = answer.FAST;
-      } else if (task.time && task.time > state.settings.SLOW) {
+      } else if (task.time > state.settings.SLOW) {
         answerType = answer.SLOW;
       }
-    } else if (task.answer && !compareAnswers(task.answer, task.answers)) {
+    } else if (task.answer && !compareAnswers(task.answer, task.correct)) {
       answerType = answer.WRONG;
     }
     arr.push(answerType);

@@ -1,9 +1,8 @@
 import ViewAbstract from './view-abstract';
 
 export default class ViewStat extends ViewAbstract {
-  constructor(i, isFail, title, answerLine, points, extraRow, totalPoints) {
+  constructor(isFail, title, answerLine, points, extraRow, totalPoints) {
     super();
-    this.i = i;
     this.isFail = isFail;
     this.title = title;
     this.answerLine = answerLine;
@@ -18,7 +17,7 @@ export default class ViewStat extends ViewAbstract {
         <h2 class="result__title">${this.title}</h2>
         <table class="result__table">
           <tr>
-            <td class="result__number">${this.i + 1}</td>
+            <td class="result__number">1.</td>
             <td colspan="2">${this.answerLine}</td>
             <td class="result__points">× 100</td>
             <td class="result__total">${this.points}</td>
@@ -34,7 +33,7 @@ export default class ViewStat extends ViewAbstract {
         <h2 class="result__title">${this.title}</h2>
         <table class="result__table">
           <tr>
-            <td class="result__number">${this.i + 1}</td>
+            <td class="result__number">1.</td>
             <td>${this.answerLine}</td>
             <td class="result__total"></td>
             <td class="result__total  result__total--final">fail</td>

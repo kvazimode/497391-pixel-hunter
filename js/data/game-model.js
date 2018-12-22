@@ -5,19 +5,17 @@ import decreaseTime from './decrease-time';
 import {compareAnswers} from './../util';
 
 export default class GameModel {
-  constructor(data, player) {
-    this.data = data;
+  constructor(player) {
     this.player = player;
     this.restart();
   }
 
-  restart() {
-    this._state = Object.assign({}, INITIAL_STATE);
-    this._state = Object.assign({}, this._state, {tasks: this.data, player: this.player});
-  }
-
   get state() {
     return this._state;
+  }
+
+  restart() {
+    this._state = Object.assign({}, INITIAL_STATE);
   }
 
   setNextLevel(state) {
@@ -36,7 +34,7 @@ export default class GameModel {
   }
 
   writeAnswer(answer, time) {
-    if (!compareAnswers(answer, this._state.tasks[this._state.level].answers)) {
+    if (!compareAnswers(answer, this._state.tasks[this._state.level].correct)) {
       this.decreaseLife();
     }
     const timeSpent = INITIAL_STATE.time - time;
