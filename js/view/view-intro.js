@@ -1,4 +1,5 @@
 import ViewAbstract from './view-abstract';
+import App from './../app';
 
 export default class ViewIntro extends ViewAbstract {
   constructor() {
@@ -18,5 +19,7 @@ export default class ViewIntro extends ViewAbstract {
     asterisk.addEventListener(`click`, () => this.clickAction());
   }
 
-  clickAction() {}
+  clickAction() {
+    App.showGreeting();
+  }
 }

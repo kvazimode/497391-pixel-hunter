@@ -1,13 +1,19 @@
-import {setScreen, enableBackButton} from './../util';
-import gameStart from './../data/game-start';
 import ViewRules from './../view/view-rules';
+import ViewHeader from './../view/view-header';
+import App from './../app';
 
-export default () => {
-  const viewRules = new ViewRules();
-  enableBackButton(viewRules.el);
-  viewRules.clickAction = (evt) => {
-    evt.preventDefault();
-    gameStart();
-  };
-  setScreen(viewRules.el);
-};
+export default class ScreenRules {
+  constructor() {
+    this.viewHeader = new ViewHeader();
+    this.viewRules = new ViewRules();
+
+    this.wrap = document.createElement(`div`);
+    this.wrap.appendChild(this.viewHeader.el);
+    this.wrap.appendChild(this.viewRules.el);
+    this.viewRules.clickAction = (player) => App.showGame(player);
+  }
+
+  get el() {
+    return this.wrap;
+  }
+}
