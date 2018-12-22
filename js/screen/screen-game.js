@@ -106,7 +106,6 @@ export default class ScreenGame {
       this.stop();
       return;
     }
-    // this.model.setNextLevel(this.model.state);
     this.changeTask();
   }
 }
