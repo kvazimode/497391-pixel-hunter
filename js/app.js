@@ -16,7 +16,9 @@ export default class App {
     const viewIntro = new ViewIntro();
     setScreen(viewIntro.el);
     ServerAction.getData()
-      .then((data) => gameData = data)
+      .then((data) => {
+        gameData = data;
+      })
       .then(App.showGreeting)
       .catch(App.showModalError);
   }
