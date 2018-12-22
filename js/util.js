@@ -22,22 +22,33 @@ export const enableBackButton = (template) => {
 };
 export const compareAnswers = (given, correct) => {
   if (typeof given === `string`) {
-    return given === correct;
+    let url = ``;
+    let photo = 0;
+    let paint = 0;
+    let type = ``;
+    for (let item of correct) {
+      item.type === `photo` ? photo++ : paint++;
+    }
+    type = photo > paint ? `painting` : `photo`;
+    for (let item of correct) {
+      url = item.type === type ? item.image.url : ``;
+    }
+    return given === url;
   }
   if (typeof given === `object`) {
     let equal = given.every((item, i) => {
-      return item === correct[i];
+      return item === correct[i].type;
     });
     return equal;
   }
 };
 export const getGameView = (type, state) => {
   switch(type) {
-    case `onePic`:
+    case `tinder-like`:
       return new ViewOnePic(state);
-    case `twoPic`:
+    case `two-of-two`:
       return new ViewTwoPic(state);
-    case `threePic`:
+    case `one-of-three`:
       return new ViewThreePic(state);
   }
 };

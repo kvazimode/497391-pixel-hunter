@@ -7,11 +7,17 @@ import ViewConfirm from './view/view-confirm';
 import ViewError from './view/view-error';
 import GameModel from './data/game-model';
 import ScreenStat from './screen/screen-stat';
+import ServerAction from './server-action';
 
+
+let gameData;
 export default class App {
   static showIntro() {
     const viewIntro = new ViewIntro();
     setScreen(viewIntro.el);
+    ServerAction.getData()
+      .then((data) => gameData = data)
+      .then(App.showGreeting);
   }
 
   static showGreeting() {
@@ -25,7 +31,7 @@ export default class App {
   }
 
   static showGame(player) {
-    const screenGame = new ScreenGame(new GameModel(player));
+    const screenGame = new ScreenGame(new GameModel(gameData, player));
     setScreen(screenGame.el);
     screenGame.start();
   }
