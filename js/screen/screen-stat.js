@@ -1,25 +1,35 @@
-import {render, enableBackButton} from './../util';
 import ViewStat from './../view/view-stat';
 import ViewFooter from './../view/view-footer';
 import ViewExtraRow from './../view/view-stat-extra-row';
 import gameResult from './../data/game-result';
+import ViewHeader from '../view/view-header';
 
 const text = {
   WIN: `Победа!`,
   FAIL: `Поражение`
 };
 
-export default (state) => {
-  const result = gameResult(state);
-  const title = (res) => {
-    return res.isFail ? text.FAIL : text.WIN;
-  };
-  const extraRow = new ViewExtraRow(state.life, result.fast, result.slow, state.settings.EXTRA_POINT);
-  const answerLine = new ViewFooter(state);
-  const normalPoints = result.correct * state.settings.NORMAL_POINT;
-  const stat = new ViewStat(result.isFail, title(result), answerLine.template, normalPoints, extraRow.template, result.total);
+export default class ScreenStat {
+  constructor(state) {
+    this.state = state;
+    this.header = new ViewHeader();
+    this.result = gameResult(this.state);
+    this.normalPoints = this.result.correct * this.state.settings.NORMAL_POINT;
+    this.title = this.getTitle(this.result);
+    this.answerLine = new ViewFooter(this.state);
+    this.extra = new ViewExtraRow(this.state.life, this.result.fast, this.result.slow, this.state.settings.EXTRA_POINT);
+    this.stat = new ViewStat(this.result.isFail, this.title, this.answerLine.template, this.normalPoints, this.extra.template, this.result.total);
 
-  const statScreen = render(stat.template);
-  enableBackButton(statScreen);
-  return statScreen;
-};
+    this.wrap = document.createElement(`div`);
+    this.wrap.appendChild(this.header.el);
+    this.wrap.appendChild(this.stat.el);
+  }
+
+  getTitle(res) {
+    return res.isFail ? text.FAIL : text.WIN;
+  }
+
+  get el() {
+    return this.wrap;
+  }
+}

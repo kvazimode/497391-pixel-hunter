@@ -4,8 +4,7 @@ import {assert} from 'chai';
 
 describe(`Level setter check`, () => {
   it(`should set level`, () => {
-    assert.equal(setLevel(state, 1).level, 1);
-    assert.equal(setLevel(state, 4).level, 4);
+    assert.equal(setLevel(state, 0).level, 0);
   });
   it(`should not set level more than available`, () => {
     assert.equal(setLevel(state, 11).level, -1);
