@@ -9,8 +9,11 @@ export default (state) => {
     total: 0
   };
   getAnswerType(state).forEach((answer) => {
-    if (answer !== `wrong`) {
-      result[answer] += 1;
+    if (answer !== `wrong` && answer !== `unknown`) {
+      result.correct += 1;
+      if (answer !== `correct`) {
+        result[answer] += 1;
+      }
     }
   });
   result.total += (result.fast + state.life) * state.settings.EXTRA_POINT;

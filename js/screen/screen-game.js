@@ -101,6 +101,8 @@ export default class ScreenGame {
     this.stopTime();
     if (answer) {
       this.model.writeAnswer(answer, this.model.state.time);
+    } else {
+      this.model.setNextLevel(this.model.state);
     }
     if (this.model.state.level >= this.model.state.tasks.length) {
       this.stop();
