@@ -21,34 +21,45 @@ export const enableBackButton = (template) => {
   backButton.addEventListener(`click`, () => setScreen(greetingScreen));
 };
 export const compareAnswers = (given, correct) => {
+  let isCorrect = false;
   if (typeof given === `string`) {
     let url = ``;
     let photo = 0;
     let paint = 0;
     let type = ``;
     for (let item of correct) {
-      item.type === `photo` ? photo++ : paint++;
+      if (item.type === `photo`) {
+        photo += 1;
+      } else {
+        paint += 1;
+      }
     }
     type = photo > paint ? `painting` : `photo`;
     for (let item of correct) {
       url = item.type === type ? item.image.url : ``;
     }
-    return given === url;
+    isCorrect = given === url;
   }
   if (typeof given === `object`) {
     let equal = given.every((item, i) => {
       return item === correct[i].type;
     });
-    return equal;
+    isCorrect = equal;
   }
+  return isCorrect;
 };
 export const getGameView = (type, state) => {
-  switch(type) {
+  let view = null;
+  switch (type) {
     case `tinder-like`:
-      return new ViewOnePic(state);
+      view = new ViewOnePic(state);
+      break;
     case `two-of-two`:
-      return new ViewTwoPic(state);
+      view = new ViewTwoPic(state);
+      break;
     case `one-of-three`:
-      return new ViewThreePic(state);
+      view = new ViewThreePic(state);
+      break;
   }
+  return view;
 };
