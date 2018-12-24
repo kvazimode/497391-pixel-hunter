@@ -49,12 +49,17 @@ export const compareAnswers = (given, correct) => {
   return isCorrect;
 };
 export const getGameView = (type, state) => {
+  let view = null;
   switch (type) {
     case `tinder-like`:
-      return new ViewOnePic(state);
+      view = new ViewOnePic(state);
+      break;
     case `two-of-two`:
-      return new ViewTwoPic(state);
+      view = new ViewTwoPic(state);
+      break;
     case `one-of-three`:
-      return new ViewThreePic(state);
+      view = new ViewThreePic(state);
+      break;
   }
+  return view;
 };
