@@ -8,9 +8,8 @@ const parse = (res) => res.json();
 const checkStatus = (res) => {
   if (res.status >= 200 && res.status < 300) {
     return res;
-  } else {
-    throw new Error(`${res.status}: ${res.statusText}`);
   }
+  throw new Error(`${res.status}: ${res.statusText}`);
 };
 
 export default class ServerAction {

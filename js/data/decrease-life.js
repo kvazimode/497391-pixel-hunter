@@ -4,7 +4,6 @@ export default (state, reset) => {
   }
   if (state.life > 0) {
     return Object.assign({}, state, {life: state.life - 1});
-  } else {
-    return state;
   }
+  return state;
 };
