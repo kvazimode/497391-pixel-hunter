@@ -19,7 +19,6 @@ export default class App {
       .then((data) => {
         gameData = data;
       })
-      // .then(App.showGreeting)
       .catch(App.showModalError);
   }
 
